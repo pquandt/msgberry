@@ -1,0 +1,44 @@
+form {
+	padding: 20px 0;
+	position: relative;
+	z-index: 2;
+	
+	input{
+		display: block;
+		outline: 0;
+		border-width: 0;
+		border-radius: 3px;
+		padding: 10px 15px;
+		margin: 0 auto 15px auto;
+		text-align: left;
+		font-size: 1.8rem;
+		
+		color: $prim;
+		
+		transition-duration: 0.25s;
+		font-weight: 300;
+		
+		
+		&:hover{
+			background-color: fade(white, 40%);
+		}
+		
+		&:focus{
+			background-color: white;
+			width: 300px;
+			
+			color: $prim;
+		}
+		
+	}
+}
+
+#answer {
+	display: flex;
+	padding-left: 20px;
+	padding-right: 20px;
+	text-align: center;
+	&:focus {
+		width: auto;
+	}
+}

@@ -1,38 +1,23 @@
-
-import './App.css';
-import React from 'react';
+import Form from "../src/Form"
+import "../src/css/style.css";
+import Status from "../src/Status";
 
 function App() {
+ 
+
   return (
-    
+    <div className="wrapper">
+      <Status />
+      <div className="container">
+        <h1>MESSAGEBERRY</h1>
 
-    <div class="wrapper">
-	<div class="container">
-		<h1>Welcome</h1>
-		
-		<form class="form">
-			<input type="text" placeholder="Username" />
-			<input type="password" placeholder="Password"/>
-			<button type="submit" id="login-button">Login</button>
-		</form>
-	</div>
+       <Form/>
+
+	 
+
+      </div>
 	
-	<ul class="bg-bubbles">
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-	</ul>
-</div>
-
-
-
+    </div>
   );
 }
 
