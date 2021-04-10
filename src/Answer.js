@@ -4,7 +4,7 @@ function Answer() {
     return (
       
            
-		  <input id="answer" type="text" value="Antwort..." readOnly/>
+		  <input className="answer" type="text" value="Antwort..." readOnly/>
 		  
        
     )

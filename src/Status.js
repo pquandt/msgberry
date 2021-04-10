@@ -16,7 +16,7 @@ setStatus({mod:"online"})
 
   return (
     <div>
-      <p className="onoff" onClick={onOff}>
+      <p className="onoff" id="" onClick={onOff}>
         {status.mod}
       </p>
     </div>

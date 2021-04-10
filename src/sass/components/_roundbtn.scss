@@ -1,0 +1,39 @@
+    .plus {
+        font-size: 2rem;
+        position: absolute;
+        border: 0;
+        right: 10%;
+        top: 2.5rem;
+        background: $btn-color-bg;
+        color:$btn-color-font;
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+        outline: none;
+        transition-duration: 0.25s;
+    &:hover {
+        transform: translateY(-2px);
+       
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+    }
+    
+    }
+       
+        .minus {
+           
+            font-size: 2rem;
+            position:relative;
+            top: -43px;
+            left: -175px;
+            background: $btn-color-bg;
+            color: $btn-color-font;
+            border: none;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            outline: none;
+        }
