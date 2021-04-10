@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import Answer from "../src/Answer";
+import Answer from "./Answer";
 
 function Form() {
   const [inputFields, setInputFields] = useState([

@@ -1,6 +1,6 @@
-import Form from "../src/Form"
-import "../src/css/style.css";
-import Status from "../src/Status";
+import Form from "./Form"
+import ".css/style.css";
+import Status from "./Status";
 
 function App() {
  

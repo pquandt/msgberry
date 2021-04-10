@@ -31,8 +31,8 @@
         position: absolute;
         right: 15%;
         top: 40px;
-        background: gray;
-        color: $prim;
+        background: $btn-color-bg;
+        color:$btn-color-font;
         border: none;
         border-radius: 50%;
         width: 35px;
@@ -55,8 +55,8 @@
             position:relative;
             top: -43px;
             left: -175px;
-            background: gray;
-            color: $prim;
+            background: $btn-color-bg;
+            color: $btn-color-font;
             border: none;
             border-radius: 50%;
             width: 25px;
