@@ -1,13 +1,17 @@
 import Form from "./Form"
 import "./css/style.css";
 import Status from "./Status";
+// import DTModifier from "./DTModifier";
 
 function App() {
  
 
   return (
     <div className="wrapper">
-      <Status />
+     <div>
+     <Status />
+  
+      </div>
       <div className="container">
         <h1>MESSAGEBERRY</h1>
 

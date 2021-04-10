@@ -1,16 +1,27 @@
-// import React, {useState} from 'react'
-// import { v4 as uuidv4 } from "uuid";
+import React, { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
-// function DTModifier() {
+function DTModifier() {
+  const [theme, setTheme] = useState({id:uuidv4(), dl:""});
 
-//     const [OnOff, setOnOff] = useState([
-//         { id: uuidv4(), swtich: "-d" },
-//       ]);
-//     return (
-//         <div>
-//             <button></button>
-//         </div>
-//     )
-// }
+  const daynight = ()=> {
+    if (theme.dl === "") {
+  setTheme({dl:"-d"})
+    }
+    else {
+      setTheme({dl:""})
+    }
+  }
+  
 
-// export default DTModifier
+  return (
+    <div>
+      <p className="onoff" onClick={daynight}>
+       ☀🌜
+      </p>
+
+    </div>
+  );
+}
+
+export default DTModifier;
