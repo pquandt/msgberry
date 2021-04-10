@@ -96,11 +96,11 @@ h1 {
     cursor: pointer;
     outline: none; }
 
-form {
+.form {
   padding: 20px 0;
   position: relative;
   z-index: 2; }
-  form input {
+  .form .Question {
     display: block;
     outline: 0;
     border-width: 0;
@@ -112,9 +112,9 @@ form {
     color: #53e3a6;
     transition-duration: 0.25s;
     font-weight: 300; }
-    form input:hover {
+    .form .Question:hover {
       background-color: fade(#fff, 40%); }
-    form input:focus {
+    .form .Question:focus {
       background-color: #fff;
       width: 30rem;
       color: #53e3a6; }

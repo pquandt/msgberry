@@ -1,5 +1,5 @@
 import Form from "./Form"
-import ".css/style.css";
+import "./css/style.css";
 import Status from "./Status";
 
 function App() {

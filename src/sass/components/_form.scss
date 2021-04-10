@@ -1,9 +1,9 @@
-form {
+.form {
 	padding: 20px 0;
 	position: relative;
 	z-index: 2;
 	
-	input{
+	.Question{
 		display: block;
 		outline: 0;
 		border-width: 0;
@@ -12,7 +12,6 @@ form {
 		margin: 0 auto 15px auto;
 		text-align: left;
 		font-size: 1.8rem;
-		
 		color: $prim;
 		
 		transition-duration: 0.25s;
