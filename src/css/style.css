@@ -148,7 +148,8 @@ h1 {
 
 .onoff {
   padding: 2rem 0 0 4rem;
-  font-size: 2rem; }
+  font-size: 2rem;
+  color: white; }
 
 .wrapper {
   background: #50a3a2;
