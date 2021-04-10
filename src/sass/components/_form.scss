@@ -3,7 +3,7 @@
 	position: relative;
 	z-index: 2;
 	
-	.Question{
+	    .Question{
 		display: block;
 		outline: 0;
 		border-width: 0;
@@ -13,7 +13,8 @@
 		text-align: left;
 		font-size: 1.8rem;
 		color: $prim;
-		
+
+		background-color: $color-white;
 		transition-duration: 0.25s;
 		font-weight: 300;
 		
@@ -28,11 +29,14 @@
 			
 			color: $prim;
 		}
-		
+		&::placeholder {
+			color: $prim;
+		}
+	
 	}
 }
 
-#answer {
+.answer {
 	display: block;
 	outline: 0;
 	border-width: 0;
@@ -68,3 +72,5 @@
 		width: auto;
 	}
 }
+	
+

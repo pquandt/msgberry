@@ -27,7 +27,7 @@ function Form() {
     setInputFields([...inputFields, { id: uuidv4(), Option: " " }]);
     return (
       <button
-        className="btnminus"
+        className="minus"
         disabled={inputFields.length === 1}
         onClick={() => handleRemoveFields()}
       >
@@ -65,12 +65,13 @@ function Form() {
             type="text"
             className="Question"
             placeholder="Option"
+            id="option"
             value={inputField.setInputFields}
             onChange={(event) => handleChangeInput(inputField.id, event)}
           />
 
           <button
-            className="btnminus"
+            className="minus"
             disabled={inputFields.length === 1}
             onClick={() => handleRemoveFields(inputField.id)}
           >
@@ -78,7 +79,7 @@ function Form() {
           </button>
 
           <button
-            className="btnplus"
+            className="plus"
             disabled={inputFields.length === 0}
             onClick={handleAddFields}
           >

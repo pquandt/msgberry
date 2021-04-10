@@ -1,0 +1,5 @@
+#darktheme{
+    color:$prim-d;
+    &:not(.onoff){
+    background-color: $bg-grad-dark-d;}
+}

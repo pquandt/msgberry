@@ -1,26 +1,24 @@
-import Form from "./Form"
+import Form from "./Form";
 import "./css/style.css";
 import Status from "./Status";
-// import DTModifier from "./DTModifier";
+import DTModifier from "./DTModifier";
 
 function App() {
- 
-
   return (
-    <div className="wrapper">
-     <div>
-     <Status />
-  
+    <div className="wrapper" id={DTModifier}>
+      <div>
+        <Status />
+        <DTModifier/>
       </div>
       <div className="container">
-        <h1>MESSAGEBERRY</h1>
-
-       <Form/>
-
-	 
+       
+       
+        <div>
+          <h1>MESSAGEBERRY</h1>
+              <Form />
+        </div>
 
       </div>
-	
     </div>
   );
 }

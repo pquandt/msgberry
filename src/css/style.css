@@ -9,31 +9,30 @@ html {
   font-size: 62.5%; }
 
 body {
-  font-family: 'Source Sans Pro', sans-serif;
-  color: white;
-  font-weight: 300;
-  background-color: #000; }
+  font-family: "Source Sans Pro", sans-serif;
+  color: #fff;
+  font-weight: 300; }
   body ::-webkit-input-placeholder {
     /* WebKit browsers */
-    font-family: 'Source Sans Pro', sans-serif;
-    color: white;
+    font-family: "Source Sans Pro", sans-serif;
+    color: #fff;
     font-weight: 300; }
   body :-moz-placeholder {
     /* Mozilla Firefox 4 to 18 */
-    font-family: 'Source Sans Pro', sans-serif;
-    color: white;
+    font-family: "Source Sans Pro", sans-serif;
+    color: #fff;
     opacity: 1;
     font-weight: 300; }
   body ::-moz-placeholder {
     /* Mozilla Firefox 19+ */
-    font-family: 'Source Sans Pro', sans-serif;
-    color: white;
+    font-family: "Source Sans Pro", sans-serif;
+    color: #fff;
     opacity: 1;
     font-weight: 300; }
   body :-ms-input-placeholder {
     /* Internet Explorer 10+ */
-    font-family: 'Source Sans Pro', sans-serif;
-    color: white;
+    font-family: "Source Sans Pro", sans-serif;
+    color: #fff;
     font-weight: 300; }
 
 h1 {
@@ -53,7 +52,7 @@ h1 {
   margin-top: 25px;
   color: #53e3a6;
   border-radius: 3px;
-  width: 250px;
+  width: 15rem;
   cursor: pointer;
   font-size: 18px;
   transition-duration: 0.25s; }
@@ -63,38 +62,40 @@ h1 {
     .btn:hover::after {
       transform: scaleX(1.4) scaleY(1.6);
       opacity: 0; }
-  .btnplus {
-    font-size: 2rem;
-    position: absolute;
-    right: 15%;
-    top: 40px;
-    background: gray;
-    color: #53e3a6;
-    border: none;
-    border-radius: 50%;
-    width: 35px;
-    height: 35px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
-    outline: none;
-    transition-duration: 0.25s; }
-    .btnplus:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
-  .btnminus {
-    font-size: 2rem;
-    position: relative;
-    top: -43px;
-    left: -175px;
-    background: gray;
-    color: #53e3a6;
-    border: none;
-    border-radius: 50%;
-    width: 25px;
-    height: 25px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
-    outline: none; }
+
+.plus {
+  font-size: 2rem;
+  position: absolute;
+  border: 0;
+  right: 10%;
+  top: 2.5rem;
+  background: gray;
+  color: #53e3a6;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  outline: none;
+  transition-duration: 0.25s; }
+  .plus:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+
+.minus {
+  font-size: 2rem;
+  position: relative;
+  top: -43px;
+  left: -175px;
+  background: gray;
+  color: #53e3a6;
+  border: none;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  outline: none; }
 
 .form {
   padding: 20px 0;
@@ -110,6 +111,7 @@ h1 {
     text-align: left;
     font-size: 1.8rem;
     color: #53e3a6;
+    background-color: #fff;
     transition-duration: 0.25s;
     font-weight: 300; }
     .form .Question:hover {
@@ -118,8 +120,10 @@ h1 {
       background-color: #fff;
       width: 30rem;
       color: #53e3a6; }
+    .form .Question::placeholder {
+      color: #53e3a6; }
 
-#answer {
+.answer {
   display: block;
   outline: 0;
   border-width: 0;
@@ -137,13 +141,13 @@ h1 {
   padding-left: 2rem;
   padding-right: 2rem;
   text-align: center; }
-  #answer:hover {
+  .answer:hover {
     background-color: fade(#fff, 40%); }
-  #answer:focus {
+  .answer:focus {
     background-color: #fff;
     width: 30rem;
     color: #53e3a6; }
-  #answer:focus {
+  .answer:focus {
     width: auto; }
 
 .onoff {
@@ -151,6 +155,13 @@ h1 {
   font-size: 2rem;
   cursor: pointer;
   color: white; }
+
+.dtmode {
+  font-size: 2rem;
+  float: right;
+  margin-right: 2rem;
+  margin-top: -2.7rem;
+  cursor: pointer; }
 
 .wrapper {
   background: #50a3a2;
@@ -162,10 +173,26 @@ h1 {
   width: 100%;
   height: 100%;
   overflow: hidden; }
+  .wrapper-d {
+    background: -webkit-linear-gradient(top left, #131616 0%, #246d80 100%);
+    background: -moz-linear-gradient(top left, #131616 0%, #246d80 100%);
+    background: -o-linear-gradient(top left, #131616 0%, #246d80 100%);
+    background: linear-gradient(to bottom right, #131616 0%, #246d80 100%);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; }
 
 .container {
+  flex-direction: row;
+  align-items: flex-start;
   max-width: 800px;
   margin: 0 auto;
   padding: 8rem 0;
   height: 40rem;
   text-align: center; }
+
+#darktheme {
+  color: #427795; }
+  #darktheme:not(.onoff) {
+    background-color: #131616; }
