@@ -63,6 +63,7 @@ function Form() {
         <div key={inputField.id}>
           <input
             type="text"
+            className="Question"
             placeholder="Option"
             value={inputField.setInputFields}
             onChange={(event) => handleChangeInput(inputField.id, event)}

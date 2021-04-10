@@ -120,10 +120,29 @@ h1 {
       color: #53e3a6; }
 
 #answer {
+  display: block;
+  outline: 0;
+  border-width: 0;
+  border-radius: 0.3rem;
+  padding: 1rem 1.5rem;
+  margin: 0 auto 15px auto;
+  text-align: left;
+  font-size: 1.8rem;
+  color: #53e3a6;
+  transition-duration: 0.25s;
+  font-weight: 300;
+  position: relative;
+  z-index: 2;
   display: flex;
   padding-left: 2rem;
   padding-right: 2rem;
   text-align: center; }
+  #answer:hover {
+    background-color: fade(#fff, 40%); }
+  #answer:focus {
+    background-color: #fff;
+    width: 30rem;
+    color: #53e3a6; }
   #answer:focus {
     width: auto; }
 

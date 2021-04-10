@@ -33,6 +33,33 @@
 }
 
 #answer {
+	display: block;
+	outline: 0;
+	border-width: 0;
+	border-radius: 0.3rem;
+	padding: 1rem 1.5rem;
+	margin: 0 auto 15px auto;
+	text-align: left;
+	font-size: 1.8rem;
+	color: $prim;
+	
+	transition-duration: 0.25s;
+	font-weight: 300;
+	
+	
+	&:hover{
+		background-color: fade($color-white, 40%);
+	}
+	
+	&:focus{
+		background-color: $color-white;
+		width: 30rem;
+		
+		color: $prim;
+	}
+
+	position: relative;
+	z-index: 2;
 	display: flex;
 	padding-left: 2rem;
 	padding-right: 2rem;
