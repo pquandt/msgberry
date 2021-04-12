@@ -1,26 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 import Answer from "./Answer";
-import { w3cwebsocket } from 'websocket'
-
-
+import { w3cwebsocket } from "websocket";
 
 function Form() {
-  const [socket, setSocket] = useState(new w3cwebsocket('ws://localhost:4000', 'echo-protocol'))
-
+  const [socket, setSocket] = useState(
+    new w3cwebsocket("ws://localhost:4000", "echo-protocol")
+  );
+  console.log(setSocket);
   useEffect(() => {
     socket.onopen = () => {
-      console.log('opened connection')
-    }
+      console.log("opened connection");
+    };
 
     socket.onclose = () => {
-      console.log('lost connection')
-    }
-  }, [socket])
-
+      console.log("lost connection");
+    };
+  }, [socket]);
 
   const [inputFields, setInputFields] = useState([
-    { id: uuidv4(), Option: "" },
+    { id: 1, Option: "" },
   ]);
 
   const handleSubmit = (e) => {
@@ -30,6 +28,7 @@ function Form() {
 
   const handleChangeInput = (id, event) => {
     const newInputFields = inputFields.map((i) => {
+    
       if (id === i.id) {
         i[event.target.name] = event.target.value;
       }
@@ -40,7 +39,7 @@ function Form() {
   };
 
   const handleAddFields = () => {
-    setInputFields([...inputFields, { id: uuidv4(), Option: " " }]);
+    setInputFields([...inputFields, { id: 1, Option: " " }]);
     return (
       <button
         className="minus"
@@ -62,11 +61,13 @@ function Form() {
   };
 
   const resetFields = () => {
-    inputFields.length = 2;
+    console.log(inputFields.length)
   };
 
   return (
-    <form className="form" onSubmit={handleSubmit}>
+   
+    <form onSubmit={handleSubmit}>
+     <div>
       <input
         className="Question"
         type="text"
@@ -74,19 +75,13 @@ function Form() {
         id="question"
         name="question"
       />
+</div>
 
       {inputFields.map((inputField) => (
+     
         <div key={inputField.id}>
-          <input
-            type="text"
-            className="Question"
-            placeholder="Option"
-            id="option"
-            value={inputField.setInputFields}
-            onChange={(event) => handleChangeInput(inputField.id, event)}
-          />
 
-          <button
+        <button
             className="minus"
             disabled={inputFields.length === 1}
             onClick={() => handleRemoveFields(inputField.id)}
@@ -94,15 +89,33 @@ function Form() {
             -
           </button>
 
-          <button
+
+          <input
+            type="text"
+            className="Question"
+            placeholder={"Option"+inputField.id}
+            id="option"
+            value={inputField.setInputFields}
+            onChange={(event) => handleChangeInput(inputField.id, event)}
+          />
+           
+            <button
             className="plus"
             disabled={inputFields.length === 0}
             onClick={handleAddFields}
           >
             +
           </button>
+
+
         </div>
+    
+    
       ))}
+   
+     
+     
+     
 
       <Answer />
 

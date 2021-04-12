@@ -5,8 +5,8 @@ import DTModifier from "./DTModifier";
 
 function App() {
   return (
-    <div className="wrapper" id={DTModifier}>
-      <div>
+    <div className="wrapper">
+      <div className="topbar">
         <Status />
         <DTModifier/>
       </div>
@@ -15,7 +15,10 @@ function App() {
        
         <div>
           <h1>MESSAGEBERRY</h1>
-              <Form />
+             
+        </div>
+        <div className="form">
+        <Form />
         </div>
 
       </div>

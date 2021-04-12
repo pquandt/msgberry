@@ -65,10 +65,8 @@ h1 {
 
 .plus {
   font-size: 2rem;
-  position: absolute;
+  margin-left: 1rem;
   border: 0;
-  right: 10%;
-  top: 2.5rem;
   background: gray;
   color: #53e3a6;
   border-radius: 50%;
@@ -83,10 +81,8 @@ h1 {
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
 
 .minus {
+  margin: 10px;
   font-size: 2rem;
-  position: relative;
-  top: -43px;
-  left: -175px;
   background: gray;
   color: #53e3a6;
   border: none;
@@ -99,37 +95,40 @@ h1 {
 
 .form {
   padding: 20px 0;
-  position: relative;
-  z-index: 2; }
-  .form .Question {
-    display: block;
-    outline: 0;
-    border-width: 0;
-    border-radius: 0.3rem;
-    padding: 1rem 1.5rem;
-    margin: 0 auto 15px auto;
-    text-align: left;
-    font-size: 1.8rem;
-    color: #53e3a6;
-    background-color: #fff;
-    transition-duration: 0.25s;
-    font-weight: 300; }
-    .form .Question:hover {
-      background-color: fade(#fff, 40%); }
-    .form .Question:focus {
-      background-color: #fff;
-      width: 30rem;
-      color: #53e3a6; }
-    .form .Question::placeholder {
-      color: #53e3a6; }
+  display: flex;
+  z-index: 2;
+  justify-content: center; }
 
-.answer {
-  display: block;
+.options {
+  margin-left: -4.8rem; }
+
+.Question {
   outline: 0;
   border-width: 0;
   border-radius: 0.3rem;
   padding: 1rem 1.5rem;
-  margin: 0 auto 15px auto;
+  margin: 0 -0 15px auto;
+  text-align: left;
+  font-size: 1.8rem;
+  color: #53e3a6;
+  background-color: #fff;
+  transition-duration: 0.25s;
+  font-weight: 300; }
+  .Question:hover {
+    background-color: fade(#fff, 40%); }
+  .Question:focus {
+    background-color: #fff;
+    width: 30rem;
+    color: #53e3a6; }
+  .Question::placeholder {
+    color: #53e3a6; }
+
+.answer {
+  outline: 0;
+  border-width: 0;
+  border-radius: 0.3rem;
+  padding: 1rem 1.5rem;
+  margin: 2rem auto 2rem auto;
   text-align: left;
   font-size: 1.8rem;
   color: #53e3a6;
@@ -151,17 +150,26 @@ h1 {
     width: auto; }
 
 .onoff {
-  padding: 2rem 0 0 4rem;
+  margin-left: 2rem;
   font-size: 2rem;
   cursor: pointer;
-  color: white; }
+  color: lime; }
+  .onoffRed {
+    color: red;
+    margin-left: 2rem;
+    font-size: 2rem;
+    cursor: pointer; }
 
 .dtmode {
-  font-size: 2rem;
-  float: right;
   margin-right: 2rem;
-  margin-top: -2.7rem;
+  font-size: 2rem;
   cursor: pointer; }
+
+.topbar {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; }
 
 .wrapper {
   background: #50a3a2;

@@ -1,6 +1,13 @@
 .onoff {
-    padding: 2rem 0 0 4rem;
+    margin-left: 2rem;
     font-size: 2rem;
     cursor: pointer;
-    color: white;
+    color: rgb(0, 255, 0);
+&Red {
+    color:red ;
+    margin-left: 2rem;
+    font-size: 2rem;
+    cursor: pointer;   
+    
+}
 }

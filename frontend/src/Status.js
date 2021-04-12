@@ -1,22 +1,20 @@
 import React, { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 
 function Status() {
-  const [status, setStatus] = useState({id:uuidv4(), mod:"offline"});
+  const [status, setStatus] = useState({ cN:"onoff", mod: "online" });
 
-const onOff = ()=> {
-  if (status.mod === "offline") {
-setStatus({mod:"online"})
-  }
-  else {
-    setStatus({mod:"offline"})
-  }
-}
-  
+
+  const onOff = () => {
+    if (status.mod === "offline") {
+      setStatus({ cN:"onoff", mod: "online" });
+    } else {
+      setStatus({ cN:"onoffRed", mod: "offline" });
+    }
+  };
 
   return (
-    <div>
-      <p className="onoff" id="" onClick={onOff}>
+    <div className={status.cN}>
+      <p  onClick={onOff}>
         {status.mod}
       </p>
     </div>

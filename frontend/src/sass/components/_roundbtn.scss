@@ -1,9 +1,8 @@
     .plus {
+
         font-size: 2rem;
-        position: absolute;
+        margin-left: 1rem;
         border: 0;
-        right: 10%;
-        top: 2.5rem;
         background: $btn-color-bg;
         color:$btn-color-font;
         border-radius: 50%;
@@ -22,11 +21,8 @@
     }
        
         .minus {
-           
+            margin: 10px;
             font-size: 2rem;
-            position:relative;
-            top: -43px;
-            left: -175px;
             background: $btn-color-bg;
             color: $btn-color-font;
             border: none;
