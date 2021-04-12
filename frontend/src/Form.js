@@ -1,8 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Answer from "./Answer";
+import { w3cwebsocket } from 'websocket'
+
+
 
 function Form() {
+  const [socket, setSocket] = useState(new w3cwebsocket('ws://localhost:4000', 'echo-protocol'))
+
+  useEffect(() => {
+    socket.onopen = () => {
+      console.log('opened connection')
+    }
+
+    socket.onclose = () => {
+      console.log('lost connection')
+    }
+  }, [socket])
+
+
   const [inputFields, setInputFields] = useState([
     { id: uuidv4(), Option: "" },
   ]);
