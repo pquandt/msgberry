@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from "react";
 import Answer from "./Answer";
-import { w3cwebsocket } from "websocket";
+// import { w3cwebsocket } from "websocket";
+
 
 function Form() {
-  const [socket, setSocket] = useState(
-    new w3cwebsocket("ws://localhost:4000", "echo-protocol")
-  );
-  console.log(setSocket);
-  useEffect(() => {
-    socket.onopen = () => {
-      console.log("opened connection");
-    };
+  // const [socket, setSocket] = useState(
+  //   new w3cwebsocket("ws://localhost:4000", "echo-protocol")
+  // );
+  // console.log(setSocket);
+  // useEffect(() => {
+  //   socket.onopen = () => {
+  //     console.log("opened connection");
+  //   };
 
-    socket.onclose = () => {
-      console.log("lost connection");
-    };
-  }, [socket]);
+  //   socket.onclose = () => {
+  //     console.log("lost connection");
+  //   };
+  // }, [socket]);
 
   const [inputFields, setInputFields] = useState([
     { id: 1, Option: "" },
@@ -24,11 +25,17 @@ function Form() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("InputFields");
+    /*
+      TODO gib der Answer einen state runter die dann die frage beinhaltet.
+      dafuer gibt es die (props) die in dem Component selbst, in dem Fall Anser, angegebn werden koennen
+      https://reactjs.org/docs/components-and-props.html#extracting-components
+      Somit kann der state dieser prop hier oben gehandelt werden und nach unten durchgereicht damit die Answer abhaengig ist von dem state hier.
+    */
   };
 
   const handleChangeInput = (id, event) => {
     const newInputFields = inputFields.map((i) => {
-    
+
       if (id === i.id) {
         i[event.target.name] = event.target.value;
       }
@@ -65,23 +72,23 @@ function Form() {
   };
 
   return (
-   
+
     <form onSubmit={handleSubmit}>
-     <div>
-      <input
-        className="Question"
-        type="text"
-        placeholder="Frage"
-        id="question"
-        name="question"
-      />
-</div>
+      <div>
+        <input
+          className="Question"
+          type="text"
+          placeholder="Frage"
+          id="question"
+          name="question"
+        />
+      </div>
 
       {inputFields.map((inputField) => (
-     
+
         <div key={inputField.id}>
 
-        <button
+          <button
             className="minus"
             disabled={inputFields.length === 1}
             onClick={() => handleRemoveFields(inputField.id)}
@@ -93,13 +100,13 @@ function Form() {
           <input
             type="text"
             className="Question"
-            placeholder={"Option"+inputField.id}
+            placeholder={"Option" + inputField.id}
             id="option"
             value={inputField.setInputFields}
             onChange={(event) => handleChangeInput(inputField.id, event)}
           />
-           
-            <button
+
+          <button
             className="plus"
             disabled={inputFields.length === 0}
             onClick={handleAddFields}
@@ -109,13 +116,13 @@ function Form() {
 
 
         </div>
-    
-    
+
+
       ))}
-   
-     
-     
-     
+
+
+
+
 
       <Answer />
 
