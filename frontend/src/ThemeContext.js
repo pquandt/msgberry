@@ -13,7 +13,7 @@ export function useThemeUpdate() {
 }
 
 
-export default function ThemeProvider( {children}) {
+export function ThemeProvider( {children}) {
 
     const [darkTheme, setDarktheme] = useState(false);
 
@@ -30,4 +30,4 @@ export default function ThemeProvider( {children}) {
         </ThemeUpdateContext.Provider>
       </ThemeContext.Provider>
     )
-}
+    }

@@ -1,24 +1,16 @@
-import React, { useState } from "react";
-
+import React from "react";
+import {useThemeUpdate} from "./ThemeContext"
 
 
 function DTModifier() {
-  const [theme, setTheme] = useState({ dl: "" });
+ 
+  const toggleTheme = useThemeUpdate()
 
-  const daynight = ()=> {
-    if (theme.dl === "") {
-      setTheme({ dl: "-d" });
-    } else {
-      setTheme({ dl: "" });
-    }
-    return theme
-  };
 
-  console.log(theme.dl);
   return (
     
     <div>
-      <p className="dtmode" onClick={daynight}>
+      <p className="dtmode" onClick={toggleTheme}>
         ☀🌜
       </p>
     </div>

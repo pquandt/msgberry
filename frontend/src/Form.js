@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Answer from "./Answer";
-// import { w3cwebsocket } from "websocket";
 
+
+// import { w3cwebsocket } from "websocket";
 
 function Form() {
   // const [socket, setSocket] = useState(
@@ -17,129 +17,72 @@ function Form() {
   //     console.log("lost connection");
   //   };
   // }, [socket]);
+  
 
-  const [inputFields, setInputFields] = useState([
-    { id: 1, Option: "" },
-  ]);
+  const [inputFields, setInputFields] = useState("");
+  const [data, setData] = useState ({oText:"Antwort"})
+
+  const [optionField, setOptionField] = useState("");
+
+
+  const addData= (inputFields)=>{
+  setData({oText:inputFields})
+console.log (inputFields, {optionField})
+}
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("InputFields");
-    /*
-      TODO gib der Answer einen state runter die dann die frage beinhaltet.
-      dafuer gibt es die (props) die in dem Component selbst, in dem Fall Anser, angegebn werden koennen
-      https://reactjs.org/docs/components-and-props.html#extracting-components
-      Somit kann der state dieser prop hier oben gehandelt werden und nach unten durchgereicht damit die Answer abhaengig ist von dem state hier.
-    */
+    addData(inputFields);
   };
+ 
 
-  const handleChangeInput = (id, event) => {
-    const newInputFields = inputFields.map((i) => {
-
-      if (id === i.id) {
-        i[event.target.name] = event.target.value;
-      }
-      return i;
-    });
-
-    setInputFields(newInputFields);
-  };
-
-  const handleAddFields = () => {
-    setInputFields([...inputFields, { id: 1, Option: " " }]);
-    return (
-      <button
-        className="minus"
-        disabled={inputFields.length === 1}
-        onClick={() => handleRemoveFields()}
-      >
-        -
-      </button>
-    );
-  };
-
-  const handleRemoveFields = (id) => {
-    const values = [...inputFields];
-    values.splice(
-      values.findIndex((value) => value.id === id),
-      1
-    );
-    setInputFields(values);
-  };
-
-  const resetFields = () => {
-    console.log(inputFields.length)
-  };
-
+  const clearAll = (e) => {
+    e.preventDefault();
+    setInputFields("")
+    setData ({oText:"Antwort"})
+    setOptionField ("")
+  }
+  
+ 
   return (
-
     <form onSubmit={handleSubmit}>
       <div>
         <input
           className="Question"
           type="text"
           placeholder="Frage"
-          id="question"
           name="question"
+          value={inputFields}
+          onChange={(e) => setInputFields(e.target.value)}
         />
       </div>
 
-      {inputFields.map((inputField) => (
+      <div>
+        <button className="minus">-</button>
 
-        <div key={inputField.id}>
+        <input
+          type="text"
+          className="Question"
+          placeholder={"Option"}
+          value={optionField}
+          onChange={(e) => setOptionField(e.target.value)}
+        />
 
-          <button
-            className="minus"
-            disabled={inputFields.length === 1}
-            onClick={() => handleRemoveFields(inputField.id)}
-          >
-            -
-          </button>
+        <button className="plus">+</button>
+      </div>
 
-
-          <input
-            type="text"
-            className="Question"
-            placeholder={"Option" + inputField.id}
-            id="option"
-            value={inputField.setInputFields}
-            onChange={(event) => handleChangeInput(inputField.id, event)}
-          />
-
-          <button
-            className="plus"
-            disabled={inputFields.length === 0}
-            onClick={handleAddFields}
-          >
-            +
-          </button>
-
-
-        </div>
-
-
-      ))}
-
-
-
-
-
-      <Answer />
+      <div> 
+		  <input className="answer" type="text" value={data.oText} readOnly />
+		  </div>
 
       <button
         type="submit"
-        id="send-button"
         className="btn"
-        onClick={handleSubmit}
+    
       >
         Send
       </button>
-      <button
-        type="reset"
-        id="clear-button"
-        className="btn"
-        onClick={resetFields}
-      >
+      <button type="reset" className="btn" onClick={clearAll}>
         Clear
       </button>
     </form>
