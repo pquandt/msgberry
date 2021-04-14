@@ -43,7 +43,25 @@ console.log (questionFields, {optionField})
     setQuestionFields("")
     setData ({oText:"Antwort"})
     setOptionField ("")
+    setId(1)
   }
+
+  const addField = () => {
+  return (
+  <div>
+        <button className="minus" onClick={()=> {if (id > 1) setId(id-1)}}>-</button>
+      
+        <input
+          type="text"
+          className="Question"
+          placeholder={"Option "+ id}
+          value={optionField}
+          onChange={(e) => setOptionField(e.target.value)}
+        />
+        </div>)
+}
+  
+
   
  
   return (
@@ -70,7 +88,7 @@ console.log (questionFields, {optionField})
           onChange={(e) => setOptionField(e.target.value)}
         />
 
-        <button className="plus" onClick={()=> setId(id+1)}>+</button>
+        <button className="plus" onClick={()=> setId(id+1)+addField()}>+</button>
       </div>
 
       <div> 
@@ -80,10 +98,10 @@ console.log (questionFields, {optionField})
       <button
         type="submit"
         className="btn"
-    
       >
         Send
       </button>
+
       <button type="reset" className="btn" onClick={clearAll}>
         Clear
       </button>
