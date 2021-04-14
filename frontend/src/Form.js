@@ -19,26 +19,28 @@ function Form() {
   // }, [socket]);
   
 
-  const [inputFields, setInputFields] = useState("");
+  const [questionFields, setQuestionFields] = useState("");
   const [data, setData] = useState ({oText:"Antwort"})
 
   const [optionField, setOptionField] = useState("");
 
+  const [id, setId] = useState(1)
 
-  const addData= (inputFields)=>{
-  setData({oText:inputFields})
-console.log (inputFields, {optionField})
+
+  const addData= (questionFields)=>{
+  setData({oText:questionFields})
+console.log (questionFields, {optionField})
 }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addData(inputFields);
+    addData(questionFields);
   };
  
 
   const clearAll = (e) => {
     e.preventDefault();
-    setInputFields("")
+    setQuestionFields("")
     setData ({oText:"Antwort"})
     setOptionField ("")
   }
@@ -52,27 +54,27 @@ console.log (inputFields, {optionField})
           type="text"
           placeholder="Frage"
           name="question"
-          value={inputFields}
-          onChange={(e) => setInputFields(e.target.value)}
+          value={questionFields}
+          onChange={(e) => setQuestionFields(e.target.value)}
         />
       </div>
 
       <div>
-        <button className="minus">-</button>
-
+        <button className="minus" onClick={()=> {if (id > 1) setId(id-1)}}>-</button>
+      
         <input
           type="text"
           className="Question"
-          placeholder={"Option"}
+          placeholder={"Option "+ id}
           value={optionField}
           onChange={(e) => setOptionField(e.target.value)}
         />
 
-        <button className="plus">+</button>
+        <button className="plus" onClick={()=> setId(id+1)}>+</button>
       </div>
 
       <div> 
-		  <input className="answer" type="text" value={data.oText} readOnly />
+		  <input className="answer" type="text" placeholder="Antwort" value={data.oText} readOnly />
 		  </div>
 
       <button
