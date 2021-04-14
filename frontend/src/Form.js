@@ -19,64 +19,52 @@ function Form() {
   // }, [socket]);
   
 
-  const [questionFields, setQuestionFields] = useState("");
+  const [questionField, setQuestionField] = useState("");
   const [data, setData] = useState ({oText:"Antwort"})
 
-  const [optionField, setOptionField] = useState("");
+  const [optionFields, setOptionFields] = useState("");
 
   const [id, setId] = useState(1)
 
 
   const addData= (questionFields)=>{
   setData({oText:questionFields})
-console.log (questionFields, {optionField})
+console.log (questionField, {optionFields})
 }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addData(questionFields);
+    addData(questionField);
   };
  
 
   const clearAll = (e) => {
     e.preventDefault();
-    setQuestionFields("")
+    setQuestionField("")
     setData ({oText:"Antwort"})
-    setOptionField ("")
+    setOptionFields ("")
     setId(1)
   }
 
-  const addField = () => {
-  return (
-  <div>
-        <button className="minus" onClick={()=> {if (id > 1) setId(id-1)}}>-</button>
-      
-        <input
-          type="text"
-          className="Question"
-          placeholder={"Option "+ id}
-          value={optionField}
-          onChange={(e) => setOptionField(e.target.value)}
-        />
-        </div>)
-}
+ 
   
 
   
  
   return (
     <form onSubmit={handleSubmit}>
+    
       <div>
         <input
           className="Question"
           type="text"
           placeholder="Frage"
           name="question"
-          value={questionFields}
-          onChange={(e) => setQuestionFields(e.target.value)}
+          value={questionField}
+          onChange={(e) => setQuestionField(e.target.value)}
         />
       </div>
-
+     
       <div>
         <button className="minus" onClick={()=> {if (id > 1) setId(id-1)}}>-</button>
       
@@ -84,13 +72,13 @@ console.log (questionFields, {optionField})
           type="text"
           className="Question"
           placeholder={"Option "+ id}
-          value={optionField}
-          onChange={(e) => setOptionField(e.target.value)}
+          value={optionFields}
+          onChange={(e) => setOptionFields(e.target.value)}
         />
 
-        <button className="plus" onClick={()=> setId(id+1)+addField()}>+</button>
+        <button className="plus" onClick={()=> setId(id+1)}>+</button>
       </div>
-
+    
       <div> 
 		  <input className="answer" type="text" placeholder="Antwort" value={data.oText} readOnly />
 		  </div>
