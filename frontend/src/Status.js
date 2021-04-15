@@ -1,22 +1,19 @@
 import React, { useState } from "react";
 
 function Status() {
-  const [status, setStatus] = useState({ cN:"onoff", mod: "online" });
-
+  const [status, setStatus] = useState({ cN: "onoff", mod: "online" });
 
   const onOff = () => {
     if (status.mod === "offline") {
-      setStatus({ cN:"onoff", mod: "online" });
+      setStatus({ cN: "onoff", mod: "online" });
     } else {
-      setStatus({ cN:"onoffRed", mod: "offline" });
+      setStatus({ cN: "onoffRed", mod: "offline" });
     }
   };
 
   return (
-    <div className={status.cN}>
-      <p  onClick={onOff}>
-        {status.mod}
-      </p>
+    <div className={status.cN + " noselect"}>
+      <p onClick={onOff}> {status.mod} </p>
     </div>
   );
 }

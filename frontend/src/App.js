@@ -3,36 +3,32 @@ import "./css/style.css";
 import Status from "./Status";
 import DTModifier from "./DTModifier";
 
-import {useTheme} from "./ThemeContext"
+import { useTheme } from "./ThemeContext";
 
 function App() {
-  const darkTheme=useTheme()
- 
+  const darkTheme = useTheme();
+
   if (darkTheme === true) {
-    var dt ="wrapper-d"
-  }else {dt="wrapper"}
+    var dt = "wrapper-d";
+  } else {
+    dt = "wrapper";
+  }
 
   return (
-
     <div className={dt}>
       <div className="topbar">
         <Status />
-        <DTModifier/>
+        <DTModifier />
       </div>
       <div className="container">
-       
-       
         <div>
-          <h1>MESSAGEBERRY</h1>
-             
+          <h1 className="noselect">MESSAGEBERRY</h1>
         </div>
         <div className="form">
-        <Form />
+          <Form />
         </div>
-
       </div>
     </div>
- 
   );
 }
 
