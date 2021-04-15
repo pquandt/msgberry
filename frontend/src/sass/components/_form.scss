@@ -1,83 +1,76 @@
 .form {
-	padding: 20px 0;
-	display: flex;
-	z-index: 2;
-	justify-content: center;
+  padding: 20px 0;
+  display: flex;
+  z-index: 2;
+  justify-content: center;
 }
-
 
 .options {
-	margin-left: -4.8rem;
+  margin-left: -4.8rem;
 }
 
+.Question {
+  outline: 0;
+  border-width: 0;
+  border-radius: 0.3rem;
+  padding: 1rem 1.5rem;
+  margin: 0 -0 15px auto;
+  text-align: left;
+  font-size: 1.8rem;
+  color: $prim;
 
-.Question{
-	
-	outline: 0;
-	border-width: 0;
-	border-radius: 0.3rem;
-	padding: 1rem 1.5rem;
-	margin: 0 -0 15px auto;
-	text-align: left;
-	font-size: 1.8rem;
-	color: $prim;
+  background-color: $color-white;
+  transition-duration: 0.25s;
+  font-weight: 300;
 
-	background-color: $color-white;
-	transition-duration: 0.25s;
-	font-weight: 300;
-	
-	
-	&:hover{
-		background-color: fade($color-white, 40%);
-	}
-	
-	&:focus{
-		background-color: $color-white;
-		width: 30rem;
-		
-		color: $prim;
-	}
-	&::placeholder {
-		color: $prim;
-	}
+  &:hover {
+    background-color: fade($color-white, 40%);
+  }
 
+  &:focus {
+    background-color: $color-white;
+    width: 30rem;
+
+    color: $prim;
+  }
+  &::placeholder {
+    color: $prim;
+  }
 }
 
 .answer {
-	
-	outline: 0;
-	border-width: 0;
-	border-radius: 0.3rem;
-	padding: 1rem 1.5rem;
-	margin: 2rem auto 2rem auto;
-	text-align: left;
-	font-size: 1.8rem;
-	color: $prim;
-	
-	transition-duration: 0.25s;
-	font-weight: 300;
-	
-	
-	&:hover{
-		background-color: fade($color-white, 40%);
-	}
-	
-	&:focus{
-		background-color: $color-white;
-		width: 30rem;
-		
-		color: $prim;
-	}
+  outline: 0;
+  border-width: 0;
+  border-radius: 0.3rem;
+  padding: 1rem 1.5rem;
+  margin: 2rem auto 2rem auto;
+  text-align: left;
+  font-size: 1.8rem;
+  color: $prim;
+  background-color: $color-white;
 
-	position: relative;
-	z-index: 2;
-	display: flex;
-	padding-left: 2rem;
-	padding-right: 2rem;
-	text-align: center;
-	&:focus {
-		width: auto;
-	}
+  transition-duration: 0.25s;
+  font-weight: 300;
+
+  &:hover {
+    background-color: fade($color-white, 40%);
+    color: $prim;
+  }
+
+  &:focus {
+    background-color: $color-white;
+    width: 30rem;
+
+    color: $prim;
+  }
+
+  position: relative;
+  z-index: 2;
+  display: flex;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  text-align: center;
+  &:focus {
+    width: auto;
+  }
 }
-	
-

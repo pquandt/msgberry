@@ -54,7 +54,7 @@ h1 {
 .btn {
   appearance: none;
   outline: 0;
-  background-color: white;
+  background-color: #fff;
   border: 0;
   padding: 10px 15px;
   margin-left: 25px;
@@ -146,6 +146,7 @@ h1 {
   text-align: left;
   font-size: 1.8rem;
   color: #53e3a6;
+  background-color: #fff;
   transition-duration: 0.25s;
   font-weight: 300;
   position: relative;
@@ -155,7 +156,8 @@ h1 {
   padding-right: 2rem;
   text-align: center; }
   .answer:hover {
-    background-color: fade(#fff, 40%); }
+    background-color: fade(#fff, 40%);
+    color: #53e3a6; }
   .answer:focus {
     background-color: #fff;
     width: 30rem;
