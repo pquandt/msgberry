@@ -1,10 +1,10 @@
-import React, { useEffect, useReducer, useState } from "react";
-import { sendMessage } from "../appconfig/socket/WebSocket";
-import { WSReducer } from '../appconfig/socket/WSReducer'
+import React, { useContext, useState } from "react";
+import { WSStateContext } from '../appconfig/socket/WSReducer'
+
+
 
 function Form() {
-  const [state, dispatch] = useReducer(WSReducer, undefined)
-
+  const wsState = useContext(WSStateContext)
 
   const [questionField, setQuestionField] = useState("");
   const [data, setData] = useState({ oText: "Antwort" });
@@ -21,8 +21,8 @@ function Form() {
   const handleSubmit = (e) => {
     e.preventDefault();
     addData(questionField);
-    console.log('seinding data')
-    sendMessage()
+    console.log('emiting a message')
+    wsState.socket.send('Test Text for websocket server')
   };
 
   const clearAll = (e) => {

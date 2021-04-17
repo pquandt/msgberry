@@ -1,7 +1,11 @@
+import React from 'react'
+
+
 
 /* Type safe reducer funtions */
 export const WSReducerActions = Object.freeze({
   example: 'example',
+  setSocket: 'setSocket',
 })
 
 
@@ -16,7 +20,9 @@ export const WSReducer = (state, action) => {
       return state
 
 
-
+    case WSReducerActions.setSocket:
+      console.log('received setSocket action')
+      return { ...state, socket: action.payload }
 
 
 
@@ -25,3 +31,8 @@ export const WSReducer = (state, action) => {
       return state
   }
 }
+
+
+
+export const WSDispatchContext = React.createContext(WSReducer)
+export const WSStateContext = React.createContext({})

@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-
 export default function ConnectionState() {
   /* 
     Es gibt nur noch einen state als bool, um die abfrage leichter zu machen
-    Mittelfristig müssen wir den online State hochshiften in einen Context, um auch aus 
-    anderen components drauf zugreifen zu können.
+    der State ist momentan lokal gelöst, kann aber über den WSReducer gehandelt werden.
   */
   const [online, setOnline] = useState(false);
 
