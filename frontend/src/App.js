@@ -1,9 +1,9 @@
-import Form from "./Form";
+import Form from "./main/Form";
 import "./css/style.css";
-import Status from "./Status";
-import DTModifier from "./DTModifier";
+import ConnectionState from "./appconfig/ConnectionState";
+import DTModifier from "./appconfig/DTModifier";
 
-import { useTheme } from "./ThemeContext";
+import { useTheme } from "./appconfig/ThemeContext";
 
 function App() {
   const darkTheme = useTheme();
@@ -17,7 +17,7 @@ function App() {
   return (
     <div className={dt}>
       <div className="topbar">
-        <Status />
+        <ConnectionState />
         <DTModifier />
       </div>
       <div className="container">

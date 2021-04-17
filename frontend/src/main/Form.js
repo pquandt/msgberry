@@ -1,21 +1,10 @@
-import React, { useEffect, useState } from "react";
-
-// import { w3cwebsocket } from "websocket";
+import React, { useEffect, useReducer, useState } from "react";
+import { sendMessage } from "../appconfig/socket/WebSocket";
+import { WSReducer } from '../appconfig/socket/WSReducer'
 
 function Form() {
-  // const [socket, setSocket] = useState(
-  //   new w3cwebsocket("ws://localhost:4000", "echo-protocol")
-  // );
-  // console.log(setSocket);
-  // useEffect(() => {
-  //   socket.onopen = () => {
-  //     console.log("opened connection");
-  //   };
+  const [state, dispatch] = useReducer(WSReducer, undefined)
 
-  //   socket.onclose = () => {
-  //     console.log("lost connection");
-  //   };
-  // }, [socket]);
 
   const [questionField, setQuestionField] = useState("");
   const [data, setData] = useState({ oText: "Antwort" });
@@ -32,6 +21,8 @@ function Form() {
   const handleSubmit = (e) => {
     e.preventDefault();
     addData(questionField);
+    console.log('seinding data')
+    sendMessage()
   };
 
   const clearAll = (e) => {
