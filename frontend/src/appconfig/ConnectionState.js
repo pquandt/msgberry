@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
+import { WSStateContext } from './socket/WSContextConfig'
+
+
+
+
 export default function ConnectionState() {
+  const { online, autoReconnect } = useContext(WSStateContext)
   /* 
     Es gibt nur noch einen state als bool, um die abfrage leichter zu machen
-    der State ist momentan lokal gelöst, kann aber über den WSReducer gehandelt werden.
+    Dieser ist global über den WSContext gelöst.
   */
-  const [online, setOnline] = useState(false);
 
 
   return (
@@ -15,8 +20,13 @@ export default function ConnectionState() {
     <div className={`${online ? 'onoff' : 'onoffRed'} noselect`}>
 
       {/* Set Online müssen wir dann auch nicht mehr in eine extra funktion packen. */}
-      <p onClick={() => setOnline(!online)}> {online ? 'online' : 'offline'} </p>
+      <p> {online ? 'online' : 'offline'} </p>
+      <div>
 
+        <input type="checkbox" name='autoreconnect' checked={autoReconnect} />
+        <label for="autoreconnect">Auto Reconnect</label>
+
+      </div>
     </div>
   );
 }

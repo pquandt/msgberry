@@ -12,7 +12,7 @@ const server = http.createServer((req, res) => {
 
 
 server.listen(PORT, () => {
-  console.log(`listening on PORT ${PORT}`)
+  console.log(`${Date.now()} listening on PORT ${PORT}`)
 })
 
 
@@ -24,7 +24,7 @@ const wsServer = new WebSocketServer({
 
 
 wsServer.on('request', (request) => {
-  console.log('Connection Established')
+  console.log(`${Date.now()} Connection Established`)
   const connection = request.accept('echo-protocol', request.origin)
 
   connection.on('message', (message) => {
@@ -33,7 +33,7 @@ wsServer.on('request', (request) => {
 
 
   connection.on('close', () => {
-    console.log('connection closed')
+    console.log(`${Date.now()} connection closed`)
   })
 
 })

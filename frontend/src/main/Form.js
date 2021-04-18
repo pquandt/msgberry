@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { WSStateContext } from '../appconfig/socket/WSReducer'
+import { WSStateContext } from '../appconfig/socket/WSContextConfig'
 
 
 
@@ -22,7 +22,7 @@ function Form() {
     e.preventDefault();
     addData(questionField);
     console.log('emiting a message')
-    wsState.socket.send('Test Text for websocket server')
+    wsState.socket.close()
   };
 
   const clearAll = (e) => {
