@@ -1,5 +1,5 @@
 import React from "react";
-import {useThemeUpdate} from "./ThemeContext"
+import { useThemeUpdate } from "./ThemeContext"
 import Switch from '@material-ui/core/Switch';
 
 
@@ -19,16 +19,16 @@ function DTModifier() {
 
 
   return (
-    
+
     <div>
       <p className="dtmode" onClick={toggleTheme}>
-      <Switch
-        checked={state.checkedB}
-        onChange={handleChange}
-        color="secondary"
-        name="checkedB"
-        inputProps={{ 'aria-label': 'primary checkbox'}}
-      />
+        <Switch
+          checked={state.checkedB}
+          onChange={handleChange}
+          color="secondary"
+          name="checkedB"
+          inputProps={{ 'aria-label': 'primary checkbox' }}
+        />
       </p>
     </div>
   );
