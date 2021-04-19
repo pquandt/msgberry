@@ -15,55 +15,53 @@ function App() {
   const [socketState, setSocketState] = useState(undefined)
   const [autoConnectInterval, setAutoConnectInterval] = useState(undefined)
 
+  const initializeSocket = () => {
 
-  /* Effect loop to initialize socket connection. Could be outsourced to external functions */
-  useEffect(() => {
-
-    if (!socketState) {
-      console.log('initialize app socket')
-      const newSocket = new w3cwebsocket('ws://localhost:4000', 'echo-protocol')
-      newSocket.onopen = () => {
-        console.log('opened WebSocket connection')
-        wsDispatch({ type: WSReducerActions.setOnline, payload: true })
-        /* TODO set connection state to online */
-      }
-
-      newSocket.onclose = () => {
-        console.log('closed WebSocket connection')
-        wsDispatch({ type: WSReducerActions.setOnline, payload: false })
-        /* TODO set connection state to offline */
-      }
-      setSocketState(newSocket)
+    console.log('initialize app socket')
+    const newSocket = new w3cwebsocket('ws://localhost:4000', 'echo-protocol')
+    newSocket.onopen = () => {
+      console.log('opened WebSocket connection')
+      wsDispatch({ type: WSReducerActions.setOnline, payload: true })
     }
 
+    newSocket.onclose = () => {
+      console.log('closed WebSocket connection')
+      wsDispatch({ type: WSReducerActions.setOnline, payload: false })
+    }
+    setSocketState(newSocket)
+  }
+
+  /* Effect loop to initialize socket connection. */
+  useEffect(() => {
+
+    /* 
+      Wenn noch keine socket verbindung besteht, baue eine auf.
+    */
+    if (!socketState) {
+      initializeSocket()
+    }
+
+    /* 
+      Wenn ein Socket existiert, aber noch nicht im globalen context gesetzt ist, setze es.
+    */
     if (!wsState.socket && socketState) {
-      console.log('setting global context socket')
       wsDispatch({ type: WSReducerActions.setSocket, payload: socketState })
     }
 
+    /* 
+      Wenn die Verbindung vom Socket unterbrochen wurde (socket.readyState === 3)
+      und noch kein autoConnect interval gesetzt ist
+      und autoReconnect vom user aktiviert wurde
+      Setze ein AutoConnectInterval und initialisiere alle 5 Sekunden einen Socket, bis die Verbindung steht.
+    */
     if (wsState?.socket?.readyState === 3 && !autoConnectInterval && wsState?.autoReconnect) {
-      console.log('must manually reconnect')
-      setAutoConnectInterval(setInterval(() => {
-        console.log('connect from internal interval')
-
-        const newSocket = new w3cwebsocket('ws://localhost:4000', 'echo-protocol')
-        newSocket.onopen = () => {
-          console.log('opened WebSocket connection')
-          wsDispatch({ type: WSReducerActions.setOnline, payload: true })
-          /* TODO set connection state to online */
-        }
-
-        newSocket.onclose = () => {
-          console.log('closed WebSocket connection')
-          wsDispatch({ type: WSReducerActions.setOnline, payload: false })
-          /* TODO set connection state to offline */
-        }
-        setSocketState(newSocket)
-      }, 5000))
+      setAutoConnectInterval(setInterval(initializeSocket, 5000))
     }
 
+    /* 
+      Wenn ein Socket initialisiert wurde und noch ein autoConnectInterval steht, lösche das Interval.
+    */
     if (wsState.online && autoConnectInterval) {
-      console.log('Clearing autoconnect interval due online state')
       clearInterval(autoConnectInterval)
     }
 

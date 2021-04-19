@@ -6,7 +6,8 @@ import React from 'react'
 export const WSReducerActions = Object.freeze({
   example: 'example',
   setSocket: 'setSocket',
-  setOnline: 'setOnline'
+  setOnline: 'setOnline',
+  setAutoReconnect: 'setAutoReconnect'
 })
 
 
@@ -37,13 +38,14 @@ export const WSReducer = (state, action) => {
       return state
   }
 }
-
+/* Initial Socket Context State */
 export const WSInitState = {
   socket: undefined,
   online: undefined,
   autoReconnect: false
 }
 
-
+/* Export WebSocket State Changing functions */
 export const WSDispatchContext = React.createContext(WSReducer)
+/* Export WebSocket State Context */
 export const WSStateContext = React.createContext(WSInitState)

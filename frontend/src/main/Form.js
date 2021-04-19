@@ -1,10 +1,8 @@
-import React, { useContext, useState } from "react";
-import { WSStateContext } from '../appconfig/socket/WSContextConfig'
+import React, { useState } from "react";
 
 
 
 function Form() {
-  const wsState = useContext(WSStateContext)
 
   const [questionField, setQuestionField] = useState("");
   const [data, setData] = useState({ oText: "Antwort" });
@@ -21,8 +19,6 @@ function Form() {
   const handleSubmit = (e) => {
     e.preventDefault();
     addData(questionField);
-    console.log('emiting a message')
-    wsState.socket.close()
   };
 
   const clearAll = (e) => {
