@@ -7,7 +7,7 @@ export const WSReducerActions = Object.freeze({
   example: 'example',
   setSocket: 'setSocket',
   setOnline: 'setOnline',
-  setAutoReconnect: 'setAutoReconnect'
+  setAutoReconnect: 'setAutoReconnect',
 })
 
 
@@ -23,7 +23,7 @@ export const WSReducer = (state, action) => {
 
 
     case WSReducerActions.setSocket:
-      console.log('received setSocket action')
+      console.log('received setSocket action', action.payload)
       return { ...state, socket: action.payload }
 
     case WSReducerActions.setOnline:
@@ -34,6 +34,7 @@ export const WSReducer = (state, action) => {
       console.log('setting auto reconnect to', action.payload)
       return { ...state, autoReconnect: action.payload }
 
+
     default:
       return state
   }
@@ -42,7 +43,7 @@ export const WSReducer = (state, action) => {
 export const WSInitState = {
   socket: undefined,
   online: undefined,
-  autoReconnect: false
+  autoReconnect: false,
 }
 
 /* Export WebSocket State Changing functions */
