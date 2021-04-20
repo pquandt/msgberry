@@ -15,25 +15,38 @@ function App() {
   const [socketState, setSocketState] = useState(undefined)
   const [autoConnectInterval, setAutoConnectInterval] = useState(undefined)
 
-  const initializeSocket = () => {
 
-    console.log('initialize app socket')
-    const newSocket = new w3cwebsocket('ws://localhost:4000', 'echo-protocol')
-    newSocket.onopen = () => {
-      console.log('opened WebSocket connection')
-      wsDispatch({ type: WSReducerActions.setOnline, payload: true })
-    }
-
-    newSocket.onclose = () => {
-      console.log('closed WebSocket connection')
-      wsDispatch({ type: WSReducerActions.setOnline, payload: false })
-    }
-    setSocketState(newSocket)
-  }
 
   /* Effect loop to initialize socket connection. */
   useEffect(() => {
+    const initializeSocket = () => {
 
+      console.log('initialize app socket')
+      const newSocket = new w3cwebsocket('ws://localhost:4000')
+      newSocket.onopen = () => {
+        console.log('opened WebSocket connection')
+        wsDispatch({ type: WSReducerActions.setOnline, payload: true })
+        wsDispatch({ type: WSReducerActions.setSocket, payload: socketState })
+        clearInterval(autoConnectInterval)
+        setAutoConnectInterval(undefined)
+      }
+
+      newSocket.onclose = () => {
+        console.log('closed WebSocket connection')
+        wsDispatch({ type: WSReducerActions.setOnline, payload: false })
+        if (wsState?.autoReconnect && !autoConnectInterval) {
+          setAutoConnectInterval(setInterval(initializeSocket, 5000))
+        }
+      }
+
+      newSocket.onmessage = (message) => {
+        console.log('got a message')
+        console.log(message)
+      }
+
+
+      setSocketState(newSocket)
+    }
     /* 
       Wenn noch keine socket verbindung besteht, baue eine auf.
     */
@@ -44,9 +57,9 @@ function App() {
     /* 
       Wenn ein Socket existiert, aber noch nicht im globalen context gesetzt ist, setze es.
     */
-    if (!wsState.socket && socketState) {
-      wsDispatch({ type: WSReducerActions.setSocket, payload: socketState })
-    }
+    // if (!wsState.socket && socketState) {
+    //   wsDispatch({ type: WSReducerActions.setSocket, payload: socketState })
+    // }
 
     /* 
       Wenn die Verbindung vom Socket unterbrochen wurde (socket.readyState === 3)
@@ -54,19 +67,27 @@ function App() {
       und autoReconnect vom user aktiviert wurde
       Setze ein AutoConnectInterval und initialisiere alle 5 Sekunden einen Socket, bis die Verbindung steht.
     */
-    if (wsState?.socket?.readyState === 3 && !autoConnectInterval && wsState?.autoReconnect) {
-      setAutoConnectInterval(setInterval(initializeSocket, 5000))
-    }
+    // if (wsState?.socket?.readyState === 3 && !autoConnectInterval && wsState?.autoReconnect) {
+    // setAutoConnectInterval(setInterval(initializeSocket, 5000))
+    // }
 
     /* 
       Wenn ein Socket initialisiert wurde und noch ein autoConnectInterval steht, lösche das Interval.
     */
-    if (wsState.online && autoConnectInterval) {
-      clearInterval(autoConnectInterval)
-    }
+    // if (wsState.online && autoConnectInterval && !wsState?.autoReconnect) {
+    //   clearInterval(autoConnectInterval)
+    //   setAutoConnectInterval(undefined)
+    // }
 
 
-  }, [autoConnectInterval, socketState, wsState?.autoReconnect, wsState.online, wsState.socket])
+    // if (autoConnectInterval && !wsState?.autoReconnect) {
+
+    //   clearInterval(autoConnectInterval)
+    //   setAutoConnectInterval(undefined)
+    // }
+
+
+  }, [socketState, autoConnectInterval, wsState?.autoReconnect])
 
 
 
