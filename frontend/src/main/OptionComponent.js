@@ -1,10 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 export default function OptionComponent({ id, addOptionComponent, removeOptionComponent }) {
-
-  useEffect(() => {
-    // console.log(props)
-  }, [])
 
   const [text, setText] = useState("");
   return (
@@ -17,10 +13,8 @@ export default function OptionComponent({ id, addOptionComponent, removeOptionCo
             onClick={removeOptionComponent}
           >
             -
-    </button>
+            </button>
       }
-
-
 
 
 
@@ -40,29 +34,3 @@ export default function OptionComponent({ id, addOptionComponent, removeOptionCo
   )
 }
 
-
-
-/*
-
-State
-text &&&
-id &&&
-first: boolean
-last: boolean
-
-
-
-[OptionComponents]
-
-
-{
-  1: {
-    component: OptionComponent
-  },
-  2: {
-    component: OptionComponent
-  }
-}
-
-
-*/

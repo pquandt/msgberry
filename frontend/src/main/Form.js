@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import OptionComponent from "./OptionComponent";
 
 
@@ -63,26 +63,6 @@ function Form() {
 
 
   const [optionArray, setOptionArray] = useState([createOptionComponent(1)]);
-  // const [optionCompCounterId, setOptionCompCounterId] = useState(optionArray.length);
-  /* 
-    [
-      <OptionComponent id setId />
-      <OptionComponent id setId />
-      <OptionComponent id setId />
-      <OptionComponent id setId />
-    ]
-  
-  
-  */
-
-  // useEffect(() => {
-  //   setOptionArray((oldOptionArray) => {
-  //     return [...oldOptionArray, createOptionComponent(optionCompCounterId)]
-  //   })
-  // }, [optionCompCounterId])
-
-
-
 
 
   return (
@@ -98,35 +78,6 @@ function Form() {
         />
       </div>
       {optionArray.map((singleOptionComponent) => singleOptionComponent)}
-
-
-      {/* 
-      
-      optionArray 
-      [
-        OptionComponent,
-        OptionComponent,
-        OptionComponent
-      ]
-
-      [
-        {
-          id: 1,
-          text: "",
-          first: false,
-          last: false
-        },{
-          id: 1,
-          text: "",
-          first: false,
-          last: false
-        }
-        ...
-      ]
-      
-      
-      
-      */}
 
       <div>
         <input
