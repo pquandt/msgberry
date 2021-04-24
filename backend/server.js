@@ -25,7 +25,7 @@ const wsServer = new WebSocketServer({
 
 wsServer.on('request', (request) => {
   console.log(`${Date.now()} Connection Established`)
-  const connection = request.accept('echo-protocol', request.origin)
+  const connection = request.accept()
 
   connection.on('message', (message) => {
     console.log('received message', message)

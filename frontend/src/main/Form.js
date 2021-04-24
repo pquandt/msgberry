@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import OptionComponent from "./OptionComponent";
 
 
 
@@ -7,13 +8,11 @@ function Form() {
   const [questionField, setQuestionField] = useState("");
   const [data, setData] = useState({ oText: "Antwort" });
 
-  const [optionFields, setOptionFields] = useState("");
 
-  const [id, setId] = useState(1);
 
   const addData = (questionFields) => {
     setData({ oText: questionFields });
-    console.log(questionField, { optionFields });
+    console.log(questionField);
   };
 
   const handleSubmit = (e) => {
@@ -25,9 +24,46 @@ function Form() {
     e.preventDefault();
     setQuestionField("");
     setData({ oText: "Antwort" });
-    setOptionFields("");
-    setId(1);
   };
+
+
+
+
+  const addOptionComponent = () => {
+    console.log('adding a option component')
+    console.log(optionArray)
+
+
+    const oldOptionsArray = optionArray
+    oldOptionsArray.push(createOptionComponent(optionArray.length + 1))
+    setOptionArray(oldOptionsArray)
+  }
+
+
+
+  const removeOptionComponent = () => {
+    console.log('removing a option component')
+
+    const lastArray = optionArray
+
+    lastArray.pop()
+    setOptionArray(lastArray);
+
+
+  }
+
+
+
+  function createOptionComponent(componentId) {
+    return (
+      <OptionComponent key={componentId} id={componentId} addOptionComponent={addOptionComponent} removeOptionComponent={removeOptionComponent} />
+    )
+  }
+
+
+
+  const [optionArray, setOptionArray] = useState([createOptionComponent(1)]);
+
 
   return (
     <form onSubmit={handleSubmit}>
@@ -41,29 +77,7 @@ function Form() {
           onChange={(e) => setQuestionField(e.target.value)}
         />
       </div>
-
-      <div>
-        <button
-          className="minus noselect"
-          onClick={() => {
-            if (id > 1) setId(id - 1);
-          }}
-        >
-          -
-        </button>
-
-        <input
-          type="text"
-          className="Question noselect"
-          placeholder={"Option " + id}
-          value={optionFields}
-          onChange={(e) => setOptionFields(e.target.value)}
-        />
-
-        <button className="plus noselect" onClick={() => setId(id + 1)}>
-          +
-        </button>
-      </div>
+      {optionArray.map((singleOptionComponent) => singleOptionComponent)}
 
       <div>
         <input
